@@ -55,6 +55,22 @@
             </form> 
         </section> 
     </div>
+    <section class="expense-section"> 
+        <div class="expense-header">
+            <h2>My Expenses</h2> 
+            <select id="filter-category"> 
+                <option value="All">All Categories</option>
+                <option value="Food">Food</option> 
+                <option value="Transport">Transport</option> 
+                <option value="Bills">Bills</option> 
+                <option value="Shopping">Shopping</option> 
+                <option value="Other">Other</option> 
+            </select> 
+        </div> 
+        <div id="expense-list">
+            <p class="empty-message"> No expenses added yet. </p> 
+        </div>
+    </section>
 </body>
 <script src="app.js"></script>
 </html>
