@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style src="style.css" ></style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container"> 
+        <header> 
+            <h1>Expense Tracker</h1> 
+            <p>Keep track of your daily expenses</p> 
+        </header>
+        <section class="summary"> 
+            <div class="summary-card"> 
+                <h3>Total Expenses</h3> 
+                <p id="total-expenses">Rs. 0</p> 
+            </div> 
+            <div class="summary-card"> 
+                <h3>Food</h3> 
+                <p id="food-expenses">Rs. 0</p> 
+            </div> 
+            <div class="summary-card"> 
+                <h3>Transport</h3> 
+                <p id="transport-expenses">Rs. 0</p> 
+            </div> 
+        </section>
+    </div>
 </body>
 <script src="app.js"></script>
 </html>
