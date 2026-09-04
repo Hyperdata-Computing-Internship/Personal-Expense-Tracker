@@ -16,9 +16,6 @@ body {
     margin: 40px auto;
 }
 
-
-/* Header */
-
 header {
     margin-bottom: 30px;
 }
@@ -31,9 +28,6 @@ header h1 {
 header p {
     color: #777;
 }
-
-
-/* Summary */
 
 .summary {
     display: grid;
@@ -58,4 +52,55 @@ header p {
 .summary-card p {
     font-size: 24px;
     font-weight: bold;
+}
+
+.expense-form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.expense-form h2 {
+    margin-bottom: 20px;
+}
+
+#expense-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+#filter-category {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button {
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
 }

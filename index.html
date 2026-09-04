@@ -26,6 +26,34 @@
                 <p id="transport-expenses">Rs. 0</p> 
             </div> 
         </section>
+        <section class="expense-form"> 
+            <h2>Add Expense</h2> 
+            <form id="expense-form"> 
+                <div class="form-group"> 
+                    <label for="expense-name">Expense Name</label> 
+                    <input type="text" id="expense-name" placeholder="e.g. Lunch" > 
+                </div> 
+                <div class="form-group"> 
+                    <label for="expense-amount">Amount</label> 
+                    <input type="number" id="expense-amount" placeholder="e.g. 500" > 
+                </div> 
+                <div class="form-group"> 
+                    <label for="expense-category">Category</label> 
+                    <select id="expense-category"> 
+                        <option value="Food">Food</option> 
+                        <option value="Transport">Transport</option> 
+                        <option value="Bills">Bills</option> 
+                        <option value="Shopping">Shopping</option> 
+                        <option value="Other">Other</option> 
+                    </select> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="expense-date">Date</label> 
+                    <input type="date" id="expense-date" > 
+                </div> 
+                <button type="submit">Add Expense</button> 
+            </form> 
+        </section> 
     </div>
 </body>
 <script src="app.js"></script>
