@@ -4,9 +4,10 @@ let total = document.getElementById("total-expenses") // total amount
 let foodtotal = document.getElementById("food-expenses") // total food amount
 let transporttotal = document.getElementById("transport-expenses") // total transport amount
 
+let category = document.getElementById("filter-category") // category selection to display
+let display = document.getElementById("expense-list").querySelector("p")
+
 let data = new Array()
-
-
 
 let totalsum = 0
 let foodexpenses = []
@@ -69,3 +70,15 @@ click.addEventListener("click",function(e){
     }
     
 })
+
+// display event listener
+
+category.addEventListener("change",function(e){
+    e.preventDefault();
+    data.forEach(function(val){
+        if(val["category"] == category.value){
+            display.textContent = val["expense_name"]
+        }
+    })
+})
+
