@@ -77,11 +77,14 @@ category.addEventListener("change",function(e){
     e.preventDefault();
     data.forEach(function(val){
         if(val["category"] == category.value){
-            display.appendChild(
-                <div>
-                    <p>{val["expense_name"]}</p>
-                </div>
-            )
+            const div=document.createElement("div")
+            for(let key in val){
+                const p = document.createElement("p");
+                
+                p.textContent = val.expense_name;
+                div.appendChild(p);
+            }
+            display.appendChild(div)
         }
     })
 })
