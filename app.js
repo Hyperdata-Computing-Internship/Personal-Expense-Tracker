@@ -1,27 +1,71 @@
-let click = document.getElementById("expense-form").querySelector("button")
+let click = document.getElementById("expense-form").querySelector("button")  // form submit button
 
-let expense = new Object()
+let total = document.getElementById("total-expenses") // total amount
+let foodtotal = document.getElementById("food-expenses") // total food amount
+let transporttotal = document.getElementById("transport-expenses") // total transport amount
 
-click.addEventListener("click",function(){
+let data = new Array()
+
+
+
+let totalsum = 0
+let foodexpenses = []
+let transportexpenses = []
+
+click.addEventListener("click",function(e){
+    e.preventDefault();
     let expensename = document.getElementById("expense-name").value
     let expenseamount = document.getElementById("expense-amount").value
     let expensecategory = document.getElementById("expense-category").value
     let expensedate = document.getElementById("expense-date").value
-    if(expensename!=null || expensename.value!=undefined || expensename.value!=""){
+    let expense = new Object();
+    if(expensename!=null || expensename!=undefined || expensename!=""){
         expense["expense_name"]=expensename
-    }
+    };
     if(expenseamount!=null || expenseamount!=undefined || expenseamount!=""){
-        expense["amount"]=expenseamount
-    }
+        expense["amount"]=Number(expenseamount)
+    };
     if(expensecategory!=null || expensecategory!=undefined || expensecategory!=""){
         expense["category"]=expensecategory
-    }
+    };
     if(expensedate!=null || expensedate!=undefined || expensedate!=""){
         expense["date"]=expensedate
-    }
-    print()
-})
+    };
+    data.push(expense);
 
-function print(){
-    console.log(expense)
-}
+    // total expenses
+    totalsum = data.reduce(function(accumulator,val){
+        return accumulator + val["amount"]
+    },0);
+
+    // total food expenses
+    foodexpenses = data.filter(function(val){
+        if (val["category"]=="Food"){
+            return val["amount"]
+        }
+    });
+
+    // total transport expenses
+    transportexpenses = data.filter(function(val){
+        if (val["category"]=="Transport"){
+            return val["amount"]
+        }
+    });
+
+    if(totalsum!=0 && totalsum!=NaN){
+        total.textContent = totalsum
+    }
+    if(foodexpenses!=null && foodexpenses!=undefined){
+        foodsum = foodexpenses.reduce(function(accumulator,val){
+            return accumulator + val["amount"]
+        },0);
+        foodtotal.textContent = foodsum
+    }
+    if(transportexpenses!=null && transportexpenses!=undefined){
+        transportsum = transportexpenses.reduce(function(accumulator,val){
+            return accumulator + val["amount"]
+        },0);
+        transporttotal.textContent = transportsum
+    }
+    
+})
