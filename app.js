@@ -5,36 +5,22 @@ let foodtotal = document.getElementById("food-expenses") // total food amount
 let transporttotal = document.getElementById("transport-expenses") // total transport amount
 
 let category = document.getElementById("filter-category") // category selection to display
-let display = document.getElementById("expense-list")
-
-let data = new Array()
+let display = document.getElementById("expense-list") // neeche wala table
 
 let totalsum = 0
 let foodexpenses = []
 let transportexpenses = []
 
-click.addEventListener("click",function(e){
-    e.preventDefault();
-    let expensename = document.getElementById("expense-name").value
-    let expenseamount = document.getElementById("expense-amount").value
-    let expensecategory = document.getElementById("expense-category").value
-    let expensedate = document.getElementById("expense-date").value
-    let expense = new Object();
-    if(expensename!=null || expensename!=undefined || expensename!=""){
-        expense["expense_name"]=expensename
-    };
-    if(expenseamount!=null || expenseamount!=undefined || expenseamount!=""){
-        expense["amount"]=Number(expenseamount)
-    };
-    if(expensecategory!=null || expensecategory!=undefined || expensecategory!=""){
-        expense["category"]=expensecategory
-    };
-    if(expensedate!=null || expensedate!=undefined || expensedate!=""){
-        expense["date"]=expensedate
-    };
-    data.push(expense);
+let data = new Array;
 
-    // total expenses
+window.addEventListener("DOMContentLoaded",function(){
+    data = JSON.parse(localStorage.getItem("data")) || [];
+    if(data){
+        refresh();
+    }
+});
+
+function refresh(){
     totalsum = data.reduce(function(accumulator,val){
         return accumulator + val["amount"]
     },0);
@@ -68,7 +54,30 @@ click.addEventListener("click",function(e){
         },0);
         transporttotal.textContent = transportsum
     }
-    
+}
+
+click.addEventListener("click",function(e){
+    e.preventDefault();
+    let expensename = document.getElementById("expense-name").value
+    let expenseamount = document.getElementById("expense-amount").value
+    let expensecategory = document.getElementById("expense-category").value
+    let expensedate = document.getElementById("expense-date").value
+    let expense = new Object();
+    if(expensename!=null || expensename!=undefined || expensename!=""){
+        expense["expense_name"]=expensename
+    };
+    if(expenseamount!=null || expenseamount!=undefined || expenseamount!=""){
+        expense["amount"]=Number(expenseamount)
+    };
+    if(expensecategory!=null || expensecategory!=undefined || expensecategory!=""){
+        expense["category"]=expensecategory
+    };
+    if(expensedate!=null || expensedate!=undefined || expensedate!=""){
+        expense["date"]=expensedate
+    };
+    data.push(expense);
+    localStorage.setItem("data",JSON.stringify(data));
+    refresh();
 });
 
 // display event listener
