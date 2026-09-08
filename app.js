@@ -5,7 +5,7 @@ let foodtotal = document.getElementById("food-expenses") // total food amount
 let transporttotal = document.getElementById("transport-expenses") // total transport amount
 
 let category = document.getElementById("filter-category") // category selection to display
-let display = document.getElementById("expense-section")
+let display = document.getElementById("expense-list")
 
 let data = new Array()
 
@@ -75,16 +75,16 @@ click.addEventListener("click",function(e){
 
 category.addEventListener("change",function(e){
     e.preventDefault();
+    display.innerHTML="";
     data.forEach(function(val){
-        if(val["category"] == category.value){
-            const div=document.createElement("div")
+        if(val["category"] === category.value || "All" === category.value){
+            const tr=document.createElement("tr");
             for(let key in val){
-                const p = document.createElement("p");
-                
-                p.textContent = val.expense_name;
-                div.appendChild(p);
+                const td = document.createElement("td");
+                td.textContent = val[key];
+                tr.appendChild(td);
             }
-            display.appendChild(div)
+            display.appendChild(tr)
         }
     })
 })
